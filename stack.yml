@@ -1,0 +1,21 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+functions:
+  hello:
+    lang: node
+    handler: ./services/api-gateway
+    image: hello:latest
+    environment:
+      FUNCTION_NAME: hello
+      NODE_CONFIG_DIR: ./function/config
+      MONGODB_URL: mongodb://mongo:27017/dev
+  registerUser:
+    lang: node
+    handler: ./services/api-gateway
+    image: hello:latest
+    skip_build: true
+    environment:
+      FUNCTION_NAME: registerUser
+      NODE_CONFIG_DIR: ./function/config
+      MONGODB_URL: mongodb://mongo:27017/dev
